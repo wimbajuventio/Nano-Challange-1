@@ -18,16 +18,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         envyButton.layer.cornerRadius = envyButton.frame.width/2
         blessedButton.layer.cornerRadius = blessedButton.frame.width/2
+//        if envyButton.layer.cornerRadius > blessedButton.layer.cornerRadius
+//        {
+//            self.view.sendSubviewToBack(self.envyButton)
+//            self.view.bringSubviewToFront(self.blessedButton)
+//        }
         
-        
-        // Do any additional setup after loading the view.
+        if blessedButton.frame.width > envyButton.frame.width{
+            self.view.sendSubviewToBack(self.envyButton)
+            self.view.bringSubviewToFront(self.blessedButton)
+        }else{
+            self.view.sendSubviewToBack(self.blessedButton)
+            self.view.bringSubviewToFront(self.envyButton)
+        }
     }
+    
     
     @IBAction func envyButtonClicked(_ sender: Any) {
         gedeinButtonEnvy()
     }
     func gedeinButtonEnvy ()
     {
+        self.view.sendSubviewToBack(self.envyButton)
+        self.view.bringSubviewToFront(self.blessedButton)
+
         UIView.animate(withDuration: 1)
         {
             switch self.clickedAnimation
@@ -66,18 +80,29 @@ class ViewController: UIViewController {
             }
             print(self.clickedAnimation)
             self.clickedAnimation += 1
-                 self.view.sendSubviewToBack(self.envyButton)
-                self.view.bringSubviewToFront(self.blessedButton)
+//                 self.view.sendSubviewToBack(self.envyButton)
+//                self.view.bringSubviewToFront(self.blessedButton)
         }
+        if blessedButton.frame.width > envyButton.frame.width{
+            self.view.sendSubviewToBack(self.envyButton)
+            self.view.bringSubviewToFront(self.blessedButton)
+        }else{
+            self.view.sendSubviewToBack(self.blessedButton)
+            self.view.bringSubviewToFront(self.envyButton)
+        }
+        self.view.setNeedsLayout()
+//        super.viewDidLoad()
     }
     
-    @IBAction func blessedButtonClicked(_ sender: Any) {
+    @IBAction func blessedButtonClicked(_ sender: Any)
+    {
         gedeinButtonBlessed()
     }
     
     func gedeinButtonBlessed ()
     {
-    
+        self.view.sendSubviewToBack(self.blessedButton)
+        self.view.bringSubviewToFront(self.envyButton)
     UIView.animate(withDuration: 1)
     {
     switch self.clickedAnimationBlessed
@@ -112,13 +137,24 @@ class ViewController: UIViewController {
           self.blessedButton.transform = CGAffineTransform (scaleX: 8, y: 8)
     default:
     break
+    self.view.sendSubviewToBack(self.blessedButton)
+    self.view.bringSubviewToFront(self.envyButton)
+
     }
     print(self.clickedAnimationBlessed)
     self.clickedAnimationBlessed += 1
-        self.view.sendSubviewToBack(self.blessedButton)
-        self.view.bringSubviewToFront(self.envyButton)
-    }
+//        self.view.sendSubviewToBack(self.blessedButton)
+//        self.view.bringSubviewToFront(self.envyButton)
         }
+        if blessedButton.frame.width > envyButton.frame.width{
+            self.view.sendSubviewToBack(self.envyButton)
+            self.view.bringSubviewToFront(self.blessedButton)
+        }else{
+            self.view.sendSubviewToBack(self.blessedButton)
+            self.view.bringSubviewToFront(self.envyButton)
+        }
+        self.view.setNeedsLayout()
     }
+}
 
 
