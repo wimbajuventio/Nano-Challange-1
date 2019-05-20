@@ -11,11 +11,13 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var envyButton: UIButton!
     @IBOutlet weak var blessedButton: UIButton!
+    @IBOutlet var launchScreen: UIView!
     
     var clickedAnimation = 0
     var clickedAnimationBlessed = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+         Thread.sleep(forTimeInterval: 1.0)
         envyButton.layer.cornerRadius = envyButton.frame.width/2
         blessedButton.layer.cornerRadius = blessedButton.frame.width/2
 //        if envyButton.layer.cornerRadius > blessedButton.layer.cornerRadius
@@ -141,12 +143,15 @@ class ViewController: UIViewController {
           self.blessedButton.transform = CGAffineTransform (scaleX: 8, y: 8)
     default:
     break
+        }
     self.view.sendSubviewToBack(self.blessedButton)
     self.view.bringSubviewToFront(self.envyButton)
-
-    }
     print(self.clickedAnimationBlessed)
-    self.clickedAnimationBlessed += 1
+        self.clickedAnimationBlessed += 1
+        if self.clickedAnimationBlessed > 13
+        {
+            self.clickedAnimationBlessed = 0
+        }
 //        self.view.sendSubviewToBack(self.blessedButton)
 //        self.view.bringSubviewToFront(self.envyButton)
         }
