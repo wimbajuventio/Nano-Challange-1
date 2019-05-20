@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         self.view.sendSubviewToBack(self.envyButton)
         self.view.bringSubviewToFront(self.blessedButton)
 
-        UIView.animate(withDuration: 1)
+        UIView.animate(withDuration: 0.5)
         {
             switch self.clickedAnimation
             {
@@ -80,6 +80,10 @@ class ViewController: UIViewController {
             }
             print(self.clickedAnimation)
             self.clickedAnimation += 1
+            if self.clickedAnimation > 13
+            {
+                self.clickedAnimation = 0
+            }
 //                 self.view.sendSubviewToBack(self.envyButton)
 //                self.view.bringSubviewToFront(self.blessedButton)
         }
@@ -103,7 +107,7 @@ class ViewController: UIViewController {
     {
         self.view.sendSubviewToBack(self.blessedButton)
         self.view.bringSubviewToFront(self.envyButton)
-    UIView.animate(withDuration: 1)
+    UIView.animate(withDuration: 0.5)
     {
     switch self.clickedAnimationBlessed
     {
